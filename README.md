@@ -1,6 +1,10 @@
-# AI Airbrush
+# Hand Tracker
 
 A real-time hand tracking application built with Python that detects your hand through a webcam and draws its landmarks on screen.
+
+# Preview
+
+![Hand tracking preview](<HandTrackingPreview.png>)
 
 ## Features
 
@@ -9,7 +13,7 @@ A real-time hand tracking application built with Python that detects your hand t
 * Draws 21 landmark points and the connections between them
 * Shows the current FPS on screen
 * Returns landmark positions in pixel coordinates
-* Reusable `HandDetector` module
+* Reusable HandDetector module
 
 ## Technologies Used
 
@@ -25,15 +29,15 @@ A real-time hand tracking application built with Python that detects your hand t
 3. The model returns 21 landmarks per detected hand.
 4. The landmarks and their connections are drawn on the frame.
 5. The frame rate is calculated and displayed in the corner.
-6. Press `q` to close the window.
+6. Press q to close the window.
 
 ## HandDetector Module
 
-`findHands(img, draw=True)`
+findHands(img, draw=True)
 Detects hands in a frame and optionally draws the landmarks. Returns the image.
 
-`findPosition(img, handNo=0, draw=True)`
-Returns a list of `(id, x, y)` for every landmark of the chosen hand, in pixels.
+findPosition(img, handNo=0, draw=True)
+Returns a list of (id, x, y) for every landmark of the chosen hand, in pixels.
 
 ## Hand Landmarks
 
@@ -49,4 +53,4 @@ Each hand has 21 points, numbered 0 to 20.
 ## Requirements
 
 * A webcam
-* `hand_landmarker.task` model file placed in the project folder ([download here](https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker))
+* hand_landmarker.task model file placed in the project folder ([download here](https://developers.google.com/edge/mediapipe/solutions/vision/hand_landmarker))

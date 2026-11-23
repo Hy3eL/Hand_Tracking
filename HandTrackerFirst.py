@@ -41,8 +41,8 @@ while True:
             for id, Lm in enumerate(hand_landmarks):
                 h,w, c = img.shape
                 cx, cy = int(Lm.x * w), int(Lm.y * h)
-                if id == 1:
-                    cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+                #if id == 4:
+                    #cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
             drawing_utils.draw_landmarks(img, hand_landmarks, mp.tasks.vision.HandLandmarksConnections.HAND_CONNECTIONS)
 
 
