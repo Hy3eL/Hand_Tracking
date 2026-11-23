@@ -18,9 +18,12 @@ options = HandLandmarkerOptions(
     running_mode=VisionRunningMode.VIDEO
 )
 
+
 # Hand detector
 hands = HandLandmarker.create_from_options(options)
 
+pTime = 0
+cTime = 0
 
 while True:
 
@@ -35,9 +38,24 @@ while True:
 
     if results.hand_landmarks:
         for hand_landmarks in results.hand_landmarks:
-            drawing_utils.draw_landmarks(img, hand_landmarks, mp.tasks.vision.HandLandmarksConnections.HAND_CONNECTIONS
-            )
+            for id, Lm in enumerate(hand_landmarks):
+                h,w, c = img.shape
+                cx, cy = int(Lm.x * w), int(Lm.y * h)
+                if id == 1:
+                    cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
+            drawing_utils.draw_landmarks(img, hand_landmarks, mp.tasks.vision.HandLandmarksConnections.HAND_CONNECTIONS)
+
+
+
+    #Frame rate
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+
+
+    cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
     cv2.imshow("Image", img)
+
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
